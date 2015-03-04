@@ -1,0 +1,36 @@
+<div class="alert alert-warning" ng-show="message">
+	{{message}}
+</div>
+<button ng-click="new = true" ng-show="!new">Nouvel Admin</button>
+<button ng-click="new = false" ng-show="new">Modification Admins</button>
+<div ng-hide="new">
+	<ul>
+		<li ng-repeat="admin in admins">{{admin.name}} <button ng-click="showEditAdmin(admin)">Editer</button><button ng-click="supprAdmin(admin)">supprimer</button></li>
+	</ul>
+
+	<div ng-show="editAdm">
+		<input type="text" ng-model="toEdit.mail" placeholder="{{toEdit.mail}}"><br>
+		<input type="password" ng-model="toEdit.mdp" placeholder="password"><br>
+		<input type="password" ng-model="toEdit.mdpverif" placeholder="password verification"><br>
+		<button ng-click="editAdmin(toEdit)">Editer</button>
+	</div>
+
+	<div ng-show="validEdit">
+		<h4>Entrez votre mot de passe puis valider.</h4>
+		<input type="password" placeholder="password" ng-model="verifMdp">
+		<button ng-click="valid(verifMdp)">Valider</button>
+	</div>
+</div>
+<div ng-show="new">
+	<input required="true" type="text" ng-model="newAdm.name" placeholder="Nom"><br>
+	<input required="true" type="text" ng-model="newAdm.mail" placeholder="mail"><br>
+	<input required="true" type="password" ng-model="newAdm.pass" placeholder="Mot de Passe"><br>
+	<input required="true" type="password" ng-model="newAdm.passVerif" placeholder="Verification Mot de Passe"><br>
+	<select ng-model="newAdm.statut">
+		<option value="0"> Full Admin (Tout les droits)</option>
+		<option value="1"> Admin Classique (ne peux pas modifier/créer/supprimer d'autres Admins)</option>
+		<option value="2"> Admin Basique (ne QUE modifier des posts)</option>
+	</select><br>
+	<button ng-click="newAdmin(newAdm)" ng-show="newAdm.pass && newAdm.pass == newAdm.passVerif">Créer</button>
+	<i ng-show="newAdm.pass && newAdm.pass != newAdm.passVerif">Mots de passe différents.</i>
+</div>

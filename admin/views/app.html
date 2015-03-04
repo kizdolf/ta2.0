@@ -1,0 +1,11 @@
+{{message}}
+<h3>Here the list of each post. </h3>
+<i><h4>Soon</h4></i>
+<div ng-show="playVideo" ng-bind-html='frame' style="position: fixed; width: 500px; height:500px; top: 50px; right:5px;"></div>
+<ul>
+	<li ng-repeat="post in posts">
+		<h3>{{post.video.name}}</h3>
+		<i>{{post.video.date | date:'medium'}}</i>
+		<button ng-click="play(post.video.link)">voir la vidéo</button>
+	</li>
+</ul>

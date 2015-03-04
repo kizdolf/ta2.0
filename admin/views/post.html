@@ -1,0 +1,55 @@
+<div class="alert alert-warning" ng-show="message">
+	{{message}}
+</div>
+<div class="alert alert-success" ng-show="post.lieu.name">
+	<h4>Création en cours</h4>
+	<i>Lieu:</i> <b>{{post.lieu.name}}</b>
+	<span ng-show="post.artiste.name">, <i>Artiste: </i><b>{{post.artiste.name}}</b></span>
+	<span ng-show="post.pics.nb > 0">, <i>Photos: </i><b>{{post.pics.nb}}</b></span>
+</div>
+<div ng-switch="step">
+	<ul ng-switch-when="lieu">
+		<h5>Choisir un lieu.</h5>
+		<a class="btn btn-default" href="#/new/quartier">Créer un nouveau quartier</a>
+		<li ng-repeat="lieu in choiceLieu">
+			<button ng-click="step2(lieu._id, lieu.name)">{{lieu.name}}</button>
+		</li>
+	</ul>
+
+	<div ng-switch-when="artiste">
+		<h2>Création artiste.</h2>
+		<i>Nom de l'Artiste : </i><input type="text" ng-model="artiste.name"><br>
+		<i>Lien soundcould : </i><input type="text" ng-model="artiste.sound">
+		<textarea id="textArtiste" ng-model="artiste.text" name="txtArtiste" rows="5" cols="30" class="form-control"></textarea>
+		<button ng-click="step3(artiste)">Continuer</button>
+	</div>
+
+	<div ng-switch-when="artistePic">
+		<h2>Création artiste.</h2>
+		<h3>Ajouter des photos.</h3>
+		<div class="btn btn-primary btn-upload" upload-button url="{{uriApi}}" on-success="artistePicAdded(response)">Upload</div> <!-- multiple="true" -->
+		<button ng-click="step4()">Continuer</button>
+		<ul id="listImgArtiste" class="ul-pic"></ul><span style="clear: both"></span>
+	</div>
+
+	<div ng-switch-when="video">
+		<h2>Création de la vidéo.</h2>
+		<i>Nom de la vidéo : </i><input type="text" ng-model="video.name"><br>
+		<i>Lien de la vidéo : </i><input type="text" ng-model="video.link">
+		<textarea id="textVidéo" name="textVideo" rows="5" cols="30" class="form-control"></textarea>
+		<button ng-click="step5(video)">Continuer</button>
+	</div>
+
+	<div ng-switch-when="final">
+		{{post.video.link}}
+		{{post.video.name}}
+		<br>
+		<p>{{post.video.text}}</p>
+		<br>
+		{{post.artiste.name}}
+		<p>{{post.artiste.text}}</p>
+		<br>
+		{{post.lieu.name}}
+		<p>{{post.lieu.text}}</p>
+	</div>
+</div>

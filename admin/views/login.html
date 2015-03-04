@@ -1,0 +1,6 @@
+<h1>YOU SHOULD LOG IN</h1>
+<h3>{{message}}</h3>
+
+<input type="text" ng-model="user.login" placeholder="login" required>
+<input type="password" ng-model="user.mdp" placeholder="mdp" required>
+<button ng-click="login(user)" ng-disabled="signInForm.$invalid">log-in</button>

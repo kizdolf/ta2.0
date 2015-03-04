@@ -1,0 +1,13 @@
+<div class="alert alert-warning" ng-show="message">
+	{{message}}
+</div>
+<div ng-show="!addPic">
+	<h2>Nouveau Quartier</h2>
+	<input type="text" placeholder="Nom" ng-model="lieu.name"><br>
+	<textarea id="texteLieu" ng-model="lieu.text" name="about" rows="5" cols="30" class="form-control"></textarea>
+	<button  ng-show="lieu.name" ng-click="newQuartier(lieu)">Envoyer</button>
+</div>
+<div ng-show="addPic">
+	<div class="btn btn-primary btn-upload" upload-button url="{{uriApi}}" on-success="onSuccess(response)">Upload</div> <!-- multiple="true" -->
+	<ul id="listImg"></ul>
+</div>

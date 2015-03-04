@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html ng-app="adminTA">
+<head>
+	<title>Admin</title>
+	<meta charset="utf-8">
+  	<link rel="stylesheet" type="text/css" href="inc/css/bootstrap/css/bootstrap.min.css">
+	<link href="http://fonts.googleapis.com/css?family=Abel" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="css/style.css" type="text/css" media="screen"/>
+	<link rel='stylesheet' href='css/textAngular.css'>
+</head>
+<body>
+
+<div ng-controller="logedCtrl" id="mainFrame">
+<div id="conteneur-menu2">
+	<ul>
+		<li><a href="/admin">Admin</a></li>
+		<li><a href="#/profil">Editer le profil</a></li>
+		<li><a href="#/gestion">gestion admins</a></li>
+		<li><a href="../components/piwik/piwik/index.php">Stats site</a></li>
+		<li><a href="#/new/quartier">Nouveau quartier</a></li>
+		<li><a href="#/new/post">Nouveau post</a></li>
+		<li><a href="../index.php">Voir le site</a></li>
+		<li><button ng-click="logout()">Se déconnecter ({{nameLoged}})</button> </li>
+	</ul>
+</div>
+<div id="sidebar">
+		<h3>Raccourcis</h3>
+		<ul>
+			<li><a href="https://www.facebook.com/toulouseacoustics">Facebook Page</a></li>
+			<li><a href="https://www.facebook.com/groups/495231230518643/">Facebook Groupe</a></li>
+			<li><a href="https://trello.com/#">Trello</a></li>
+			<li><a href="https://soundcloud.com/toulouse-acoustics">Souncloud</a></li>
+			<li><a href="edit_texts.php">Editer les textes</a></li>
+			<li><a href="styles.php">Ajouter un style</a></li>
+			<li><a href="partners.php">Partenaires</a></li>
+			<li><a href="pics.php?show=team">Galerie équipe</a></li>
+			<li><a href="pics.php?show=off">Galerie 'off'</a></li>
+		</ul>
+		<hr>
+		<h3>Edition</h3>
+		<div class="dropdown">
+			<a class='btn btn-default btn-md' href="#">artistes</a>
+		</div>
+		<div class="dropdown">
+			<a class='btn btn-default btn-md' href="#/edit/quartier">quartiers</a>
+		</div>
+		<div class="dropdown">
+			<a   class='btn btn-default btn-md' data-toggle="dropdown" href="#">videos</a>
+			<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+			<?php foreach ($alls['videos'] as $video) {
+  				echo "<li><a  href='edit.php?type=video&id=".$video['id']."'>".$video['name']."</a></li>";
+  			} ?>
+  			</ul>
+		</div>
+		<hr>
+		<div>
+			<button class="btn btn-default draft">Notes publiques</button>
+		</div>
+		<hr>
+		<h3>Dev</h3>
+		<div class="dropdown">
+			<a  class='btn btn-default btn-md'  data-toggle="dropdown" href="#">Dev links</a>
+			<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+				<li><a href="http://localhost/phpmyadmin/"> Local PhpMyadmin</a></li>
+  				<li><a href="https://vmheb62064.ikoula.com:8443/domains/databases/phpMyAdmin/import.php">Dk phpMyAdmin</a></li>
+  				<li><button class="get_dump">Dump SQL install</button></li>
+  				<?php if($rights == 0){ ?><li><button class="btn btn-danger run_s">(danger) Run get_.sh.</button></li><?php } ?>
+  				<li><a href="test_admin_dev.php">tests.</a></li>
+  			</ul>
+		</div>
+		<div id="confirm" style="display:none;" class="alert alert-danger">
+			<h4>Attention! lancer ce script vas supprimer puis générer la totalité de la base de données. Voulez vous continuez?</h4>
+			<button class="btn btn-success btn-xs cancel">Annuler</button>
+			<a class="btn btn-warning btn-xs" href="../t_q.php">Shut UP and do it!</a>
+		</div>
+		<div id="links_ready" style="display:none;" class="alert alert-info"></div>
+		<a href="docTA-Admin.odt">Documentation admin.</a>
+</div>
+<div id="drafts" style="display:none;">
+	<button class="btn btn-default btn-xs add_draft">Ajouter une note</button>
+	<button class="btn btn-warning btn-xs hide_drafts">Fermer (Esc)</button>
+	<div id="form_draft">
+		<form method="post" action="./drafts.php" id="send_draft" style="width:50%; min-width: 350px;">
+			<input type="text" name="draft_name" placeholder="nom">
+			<textarea id="ck_b" name="draft" rows="5" cols="30"></textarea>
+			<div id="sub_form">
+				<button class="btn btn-success valid" type="submit" name="new_draft">Add it</button>
+			</div>
+		</form>
+	</div>
+	<div id="drafts_list">
+	</div>
+</div>
+</div>
+
+<div ng-view id="wrapper"></div>
+
+</body>
+<script src="inc/jquery.min.js"></script>
+<script src="inc/ckeditor/ckeditor.js"></script>
+<script src="inc/css/bootstrap/js/bootstrap.min.js"></script>
+<script src="inc/moment.js"></script>
+<script src="inc/angular.js"></script>
+<script src="inc/angular-local-storage.min.js"></script>
+<script src="inc/angular-route.min.js"></script>
+<script src="inc/upload.min.js"></script>
+<script src="inc/sha256.js"></script>
+
+<script src="js/factorys/api.js"></script>
+<script src="js/factorys/postApi.js"></script>
+
+<script src="js/controllers/login.js"></script>
+<script src="js/controllers/profil.js"></script>
+<script src="js/controllers/post.js"></script>
+<script src="js/controllers/app.js"></script>
+<script src="js/controllers/gestion.js"></script>
+<script src="js/controllers/quartier.js"></script>
+<script src="js/controllers/editQuartier.js"></script>
+
+<script src="js/app.js"></script>
+<script src="js/factorys.js"></script>
+<script src="js/controllers.js"></script>
+<script src="js/routes.js"></script>
+
+
+</html>
