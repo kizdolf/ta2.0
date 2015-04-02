@@ -1,5 +1,6 @@
 node_modules/*
-statics/*
+statics/pictures/artistes/*
+statics/pictures/lieux/*
 .ideas
 .jshintrc
 app/components/ckeditor/*

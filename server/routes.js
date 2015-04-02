@@ -8,13 +8,8 @@ var	Admins				= require('./handlers/admin'),
 	Quartiers			= require('./handlers/quartier'),
 	Post				= require('./handlers/post'),
 	Artiste				= require('./handlers/artiste'),
-<<<<<<< HEAD
 	Lib					= require('./lib/lib'),
-	bcrypt				= require('bcrypt'),
-=======
-	Lib					= require('./lib/verif.js'),
 	bcrypt				= require('bcrypt-nodejs'),
->>>>>>> origin/master
 	SALT_WORK_FACTOR	= 10;
 
 var	router 				= express.Router();
