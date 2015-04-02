@@ -9,7 +9,7 @@ var	Admins				= require('./handlers/admin'),
 	Post				= require('./handlers/post'),
 	Artiste				= require('./handlers/artiste'),
 	Lib					= require('./lib/verif.js'),
-	bcrypt				= require('bcrypt'),
+	bcrypt				= require('bcrypt-nodejs'),
 	SALT_WORK_FACTOR	= 10;
 
 var	router 				= express.Router();

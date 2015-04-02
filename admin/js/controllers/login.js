@@ -2,7 +2,7 @@
 
 var loginController = function($scope, $http, localStorageService, $location, $rootScope, api){
 		
-		$('#mainFrame').hide(0);
+	$('#mainFrame').hide(0);
 
 	$scope.login = function(user){
 		localStorageService.clearAll();

@@ -3,7 +3,7 @@
 var mongoose			= require('mongoose'),
 	Schema				= mongoose.Schema,
 	statuts				= [0, 1, 2],
-	bcrypt				= require('bcrypt'),
+	bcrypt				= require('bcrypt-nodejs'),
 	SALT_WORK_FACTOR	= 10;
 
 var adminSchema	= new Schema({
@@ -49,8 +49,11 @@ adminSchema.pre('save', function(next) {
 		// hash the password using our new salt
 		console.log("hash password..");
 		bcrypt.hash(user.password, salt, function(err, hash) {
-			if (err)
+			console.log("in callback!")
+			if (err){
+				console.log("error");
 				return next(err);
+			}
 			// override the cleartext password with the hashed one
 			user.password = hash;
 			console.log("hash == " + hash);
