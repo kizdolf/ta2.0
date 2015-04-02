@@ -2,7 +2,7 @@
 
 var Admin				= require('./../models/admin'),
 	Token				= require('rand-token'),
-	bcrypt				= require('bcrypt'),
+	bcrypt				= require('bcrypt-nodejs'),
 	Q					= require('q'),
 	SALT_WORK_FACTOR	= 10,
 	verif				= require('./../lib/lib');
@@ -53,7 +53,17 @@ exports.whoAmI = function(req, res){
 	verif, recois login+mdp , verifie l'existance en bdd, créer un token unique, renvoie token + date + id admin
 */
 exports.verif = function(req, res){
-	var toVerif = req.body;
+/*	console.log("I'm here");
+	console.log(req.body);
+	var adm = new Admin();
+	adm.name = "root";
+	adm.statut = 0;
+	adm.password = "4813494d137e1631bba301d5acab6e7bb7aa74ce1185d456565ef51d737677b2";
+	adm.save(function(err){
+		console.log("done!!");
+	});
+*/
+var toVerif = req.body;
 	Admin.findOne({name: toVerif.login}, function(err, user){
 		if(err)
 			res.send(err);
