@@ -3,11 +3,29 @@
 var editQuartierController = function($scope, $http, localStorageService, $location, $rootScope, $routeParams, api, upload, postApi){	
 	var token = localStorageService.get('token');
 	var login = localStorageService.get('login');
-	$scope.message = "Edition de Lieu. Veuillez choisir un lieu à editer.";
+	var idSuppr;
 	$scope.valid = false;
-	$scope.showEdit = false;
-	$scope.list = true;
-	var idSuppr = 0;
+
+	if(!!$routeParams.id){
+		idSuppr = $routeParams.id;
+		$scope.showEdit = true;
+		$scope.list = false;
+		postApi.lieux().then(function(lieux){
+			lieux.map(function(lieu){
+				if(lieu._id == idSuppr){
+					$scope.edit(lieu);
+					return;
+				}
+			})
+		});
+	}
+	else{
+		idSuppr = 0;
+		$scope.message = "Edition de Lieu. Veuillez choisir un lieu à editer.";
+		$scope.showEdit = false;
+		$scope.list = true;
+	}
+
 
 	postApi.lieux().then(function(lieux){
 		$scope.lieux = lieux;

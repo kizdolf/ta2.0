@@ -5,7 +5,7 @@ var Admin				= require('./../models/admin'),
 	bcrypt				= require('bcrypt'),
 	Q					= require('q'),
 	SALT_WORK_FACTOR	= 10,
-	verif				= require('./../lib/verif');
+	verif				= require('./../lib/lib');
 
 
 exports.isAllowed = function(req, res){

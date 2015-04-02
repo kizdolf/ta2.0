@@ -34,7 +34,7 @@ angular.module('adminTA.routes', ['ngRoute'])
 		controller : 'postCtrl'
 	});
 
-	$routeProvider.when('/edit/quartier', {
+	$routeProvider.when('/edit/quartier/:id?', {
 		templateUrl: 'views/editQuartier.html',
 		controller : 'editQuartierCtrl'
 	});

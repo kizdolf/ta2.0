@@ -4,7 +4,7 @@ var Lieu		= require('./../models/lieu'),
 	Artiste		= require('./../models/artiste'),
 	Video		= require('./../models/video'),
 	Q			= require('q'),
-	Verif		= require('./../lib/verif');
+	Verif		= require('./../lib/lib');
 
 exports.new = function(req, res){
 	var token = req.params.token;

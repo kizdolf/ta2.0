@@ -4,7 +4,7 @@ var		Admin			= require('./../models/admin'),
 		Lieu			= require('./../models/lieu'),
 		Artiste			= require('./../models/artiste'),
 		Q				= require('q'),
-		Verif			= require('./verif'),
+		Verif			= require('./lib'),
 		mkdir			= require('mkdirp'),
 		rmrf			= require('rimraf'),
 		fs				= require('fs');
@@ -70,12 +70,12 @@ exports.addPicture = function(req, res){
 							if(err)
 								res.send(err);
 							res.json({path: 'statics/pictures/' + type + '/' + id + '/' + nb + '.' + ext});
-						});
-					});
-				});
-			});
-		}
-	});
+						}); //save
+					});//stream
+				});//on file
+			});//fin model
+		}//if 
+	});//rights
 }
 
 exports.remPicture = function(req, res){

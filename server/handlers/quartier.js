@@ -2,7 +2,7 @@
 
 var Lieu		= require('./../models/lieu'),
 	Q			= require('q'),
-	Verif		= require('./../lib/verif'),
+	Verif		= require('./../lib/lib'),
 	mkdir		= require('mkdirp'),
 	rmrf		= require('rimraf'),
 	fs			= require('fs');
@@ -47,6 +47,9 @@ exports.modif = function(req, res){
 	});
 };
 
+/*
+Doit trouver les videos associés et les tags 'sans quartier'
+*/
 exports.delete = function(req, res){
 	var token = req.params.token;
 	var login = req.params.login;

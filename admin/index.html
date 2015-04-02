@@ -4,6 +4,7 @@
 	<title>Admin</title>
 	<meta charset="utf-8">
   	<link rel="stylesheet" type="text/css" href="inc/css/bootstrap/css/bootstrap.min.css">
+  	<link rel="stylesheet" type="text/css" href="inc/css/bootstrap/css/bootstrap-theme.min.css">
 	<link href="http://fonts.googleapis.com/css?family=Abel" rel="stylesheet" type="text/css">
 	<link rel="stylesheet" href="css/style.css" type="text/css" media="screen"/>
 	<link rel='stylesheet' href='css/textAngular.css'>
@@ -19,7 +20,7 @@
 		<li><a href="../components/piwik/piwik/index.php">Stats site</a></li>
 		<li><a href="#/new/quartier">Nouveau quartier</a></li>
 		<li><a href="#/new/post">Nouveau post</a></li>
-		<li><a href="../index.php">Voir le site</a></li>
+		<li><a href="/">Voir le site</a></li>
 		<li><button ng-click="logout()">Se déconnecter ({{nameLoged}})</button> </li>
 	</ul>
 </div>
@@ -39,18 +40,13 @@
 		<hr>
 		<h3>Edition</h3>
 		<div class="dropdown">
-			<a class='btn btn-default btn-md' href="#">artistes</a>
+			<a class='btn btn-default btn-md' href="#/edit/artiste">artistes</a>
 		</div>
 		<div class="dropdown">
 			<a class='btn btn-default btn-md' href="#/edit/quartier">quartiers</a>
 		</div>
 		<div class="dropdown">
-			<a   class='btn btn-default btn-md' data-toggle="dropdown" href="#">videos</a>
-			<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-			<?php foreach ($alls['videos'] as $video) {
-  				echo "<li><a  href='edit.php?type=video&id=".$video['id']."'>".$video['name']."</a></li>";
-  			} ?>
-  			</ul>
+			<a class='btn btn-default btn-md' href="#/edit/video">videos</a>
 		</div>
 		<hr>
 		<div>

@@ -1,11 +1,20 @@
-{{message}}
-<h3>Here the list of each post. </h3>
-<i><h4>Soon</h4></i>
-<div ng-show="playVideo" ng-bind-html='frame' style="position: fixed; width: 500px; height:500px; top: 50px; right:5px;"></div>
+<div ng-show="playVideo" ng-bind-html='frame' id="frameApp"></div>
 <ul>
 	<li ng-repeat="post in posts">
 		<h3>{{post.video.name}}</h3>
 		<i>{{post.video.date | date:'medium'}}</i>
-		<button ng-click="play(post.video.link)">voir la vidéo</button>
+		<button ng-click="play(post.video.link)">voir la vidéo</button><br>
+		<div class="dropdown">
+			<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+			Options
+			<span class="caret"></span>
+			</button>
+			<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+				<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Editer l'Artiste</a></li>
+				<li role="presentation"><a role="menuitem" tabindex="-1" href="#/edit/quartier/{{post.lieu._id}}">Editer le Lieu</a></li>
+				<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Editer la Vidéo</a></li>
+				<li role="presentation"><a role="menuitem" tabindex="-1" href="#" class="btn btn-warning">Supprimer le Post</a></li>
+			</ul>
+		</div>
 	</li>
 </ul>

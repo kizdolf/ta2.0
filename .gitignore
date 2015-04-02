@@ -1,0 +1,5 @@
+node_modules/*
+statics/*
+.ideas
+.jshintrc
+app/components/ckeditor/*

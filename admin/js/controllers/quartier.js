@@ -22,8 +22,7 @@ var quartierController = function($scope, $http, localStorageService, $location,
 	}
 
 	$scope.onSuccess = function(res){
-		console.log('ret' + res.data.path);
-		$('#listImg').append('<li><img src="' + res.data.path + '"></li>');
+		$('#listImg').append('<li  style="float: left"><img style="width: 120px; height: auto" src="' + res.data.path + '"></li>');
 	}
 
 };

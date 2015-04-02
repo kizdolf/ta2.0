@@ -8,7 +8,7 @@ var	Admins				= require('./handlers/admin'),
 	Quartiers			= require('./handlers/quartier'),
 	Post				= require('./handlers/post'),
 	Artiste				= require('./handlers/artiste'),
-	Lib					= require('./lib/verif.js'),
+	Lib					= require('./lib/lib'),
 	bcrypt				= require('bcrypt'),
 	SALT_WORK_FACTOR	= 10;
 

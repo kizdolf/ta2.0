@@ -44,6 +44,10 @@ var videoSchema		= new Schema({
 	link:{
 		type: String,
 		required: true
+	},
+	weekly:{
+		type: Boolean,
+		default: false
 	}
 
 });
