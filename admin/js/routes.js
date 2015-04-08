@@ -5,6 +5,11 @@ angular.module('adminTA.routes', ['ngRoute'])
 .config(['$routeProvider', function($routeProvider){
 
 	$routeProvider.when('/', {
+		templateUrl: 'views/login.html',
+		controller : 'loginCtrl'
+	});
+
+	$routeProvider.when('/app', {
 		templateUrl: 'views/app.html',
 		controller : 'appCtrl'
 	});
@@ -40,7 +45,7 @@ angular.module('adminTA.routes', ['ngRoute'])
 	});
 
 	$routeProvider.otherwise({
-		redirectTo: '/'
+		redirectTo: '/login'
 	});
 
 }]);
