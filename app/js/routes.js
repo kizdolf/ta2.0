@@ -7,60 +7,37 @@ angular.module('myApp.routes', ['ngRoute'])
 	$routeProvider.when('/home', {
 		templateUrl: 'views/home.html',
 		controller: 'headCtrl'
-	});
-
-	$routeProvider.when('/artistes/:id', {
+	}).when('/artistes/:id', {
 		templateUrl :'views/artiste.html',
 		controller: 'artisteCtrl'
-	});
-
-	$routeProvider.when('/artistes', {
+	}).when('/artistes', {
 		templateUrl :'views/artistes.html',
 		controller: 'artistesCtrl'
-	});
-
-	$routeProvider.when('/artistes_locaux', {
+	}).when('/artistes_locaux', {
 		templateUrl :'views/locaux.html',
 		controller: 'locauxCtrl'
-	});
-
-	$routeProvider.when('/artistes_visiteurs', {
+	}).when('/artistes_visiteurs', {
 		templateUrl :'views/visiteurs.html',
 		controller: 'visiteursCtrl'
-	});
-
-	$routeProvider.when('/quartiers', {
+	}).when('/quartiers', {
 		templateUrl :'views/quartiers.html',
 		controller: 'quartiersCtrl'
-	});
-
-	$routeProvider.when('/quartiers/:id', {
+	}).when('/quartiers/:id', {
 		templateUrl :'views/quartier.html',
 		controller: 'quartierCtrl'
-	});
-
-	$routeProvider.when('/portfolio', {
+	}).when('/portfolio', {
 		templateUrl :'views/pics.html',
 		controller: 'picsCtrl'
-	});
-
-	$routeProvider.when('/about', {
+	}).when('/about', {
 		templateUrl :'views/about.html',
 		controller: 'headCtrl'
-	});
-
-	$routeProvider.when('/partners', {
+	}).when('/partners', {
 		templateUrl :'views/partners.html',
 		controller: 'partnersCtrl'
-	});
-
-
-	$routeProvider.when('/contact', {
+	}).when('/contact', {
 		templateUrl :'views/contact.html',
 		controller: 'headCtrl'
-	});
-
-	$routeProvider.otherwise({
+	}).otherwise({
 		redirectTo: '/home'
 	});
 

@@ -1,5 +1,4 @@
 'use strict';
 
-angular.module('myApp', 
-	['myApp.controllers', 'myApp.routes', 'myApp.services']);
-
+angular.module('myApp',
+	['myApp.controllers', 'myApp.routes', 'myApp.services', 'myApp.factorys']);

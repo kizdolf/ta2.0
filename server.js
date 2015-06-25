@@ -11,8 +11,6 @@ var express				= require('express'),
 	busboy 				= require('connect-busboy');
 
 mongoose.connect('mongodb://localhost/data'); // connect to our database A TESTER POUR LES DEUX APPELS
-// mongoose.connect('mongodb://localhost/admTA'); // connect to our database
-global.appRoot = path.resolve(__dirname);
 app.use('/statics', express.static(__dirname + '/statics'))
 .use('/', express.static(__dirname + '/app'))
 
@@ -22,10 +20,9 @@ app.use('/statics', express.static(__dirname + '/statics'))
 .use('/api', router)
 
 .use('/admin', admin)
-
 .use('/',express.static(__dirname + '/app'))
-
 .listen(port);
+
 
 admin.use('/statics', express.static(__dirname + '/statics'))
 .use('/', express.static(__dirname + '/admin'))

@@ -1,4 +1,4 @@
- 
+
 <!DOCTYPE html>
 <html  ng-app="myApp">
 <head>
@@ -7,22 +7,8 @@
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<link rel="stylesheet" type="text/css" href="css/bootstrap/css/bootstrap.min.css">
 	<link href='http://fonts.googleapis.com/css?family=Abel' rel='stylesheet' type='text/css'>
+
 </head>
-<!-- Piwik -->
-<script type="text/javascript">
-  var _paq = _paq || [];
-  _paq.push(['trackPageView']);
-  _paq.push(['enableLinkTracking']);
-  (function() {
-    var u=(("https:" == document.location.protocol) ? "https" : "http") + "://localhost/public/adminta/components/piwik/piwik/";
-    _paq.push(['setTrackerUrl', u+'piwik.php']);
-    _paq.push(['setSiteId', 1]);
-    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0]; g.type='text/javascript';
-    g.defer=true; g.async=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
-  })();
-</script>
-<noscript><p><img src="http://localhost/public/adminta/components/piwik/piwik/piwik.php?idsite=1" style="border:0;" alt="" /></p></noscript>
-<!-- End Piwik Code -->
 <body>
   <div id="header">
   	<a href="#/home" id="img_header">
@@ -30,7 +16,7 @@
   	</a>
   </div>
   <!-- Nouveau Menu responsive: -->
-<nav ng-controller="headCtrl" class="navbar navbar-default" role="navigation" id="resp_menu">
+<nav class="navbar navbar-default" role="navigation" id="resp_menu">
 	<div class="container container-fluid">
 		<div>
 			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#list_items_menu">
@@ -75,27 +61,10 @@
 		</div>
 	</div>
 </nav>
-<nav class="navbar navbar-default col-md-2" role="navigation" style="display: none;">
-	<ul class="list-group">
-		<li class="list-group-item">
-			<a href="">fb</a>
-		</li>
-		<li class="list-group-item">
-			<a href="">tw</a>
-		</li>
-		<li class="list-group-item">
-			<a href="sound">sound</a>
-		</li>
-	</ul>
-</nav>
+
 <div class="container container-fluid">
 
-<div ng-view style="height:100%;"></div>
-
-
-<!-- <div id="container-fluid" >
-	by DonKino. all rights are reserved but do what you want also :)
-</div> -->
+    <div ng-view style="height:100%;"></div>
 
 	<div id="sound">
 		<button  class="btn_soundcloud btn btn-default">Show soundcloud!</button>
@@ -103,12 +72,15 @@
 		<iframe width="100%" height="100%" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/users/49488549&amp;color=ff5500&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false"></iframe>
 		</div>
 	</div>
+</div>
 
   <script type="text/javascript" src="http://www.google.com/recaptcha/api/js/recaptcha_ajax.js"></script>
 
   <script src="components/angular.min.js"></script>
   <script src="components/angular_routes.js"></script>
   <script src="components/jquery.js"></script>
+
+  <script src="js/factorys/posts.js"></script>
 
   <script src="js/controllers/headController.js"></script>
   <script src="js/controllers/artisteController.js"></script>
@@ -122,8 +94,8 @@
   <script src="js/controllers/contactController.js"></script>
   <script src="js/controllers/partnersController.js"></script>
 
-
   <script src="js/app.js"></script>
+  <script src="js/factorys.js"></script>
   <script src="js/controllers.js"></script>
   <script src="js/routes.js"></script>
 
@@ -132,6 +104,5 @@
   <script src="css/bootstrap/js/bootstrap.min.js"></script>
   <script src="js/services.js"></script>
   <script src="//connect.soundcloud.com/sdk.js"></script>
-  </div>
 </body>
 </html>
