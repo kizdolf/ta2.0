@@ -31,7 +31,7 @@ function($scope, $http, localStorageService, $location){
 
 .controller(
 	'appCtrl',
-	['$scope', '$http', 'localStorageService', '$location', '$rootScope', 'postApi', '$sce',
+	['$scope', '$http', 'localStorageService', '$location', '$rootScope', 'postApi', '$sce', '$window',
 	appController
 ])
 
@@ -54,19 +54,7 @@ function($scope, $http, localStorageService, $location){
 ])
 
 .controller(
-	'editQuartierCtrl',
+	'editCtrl',
 	['$scope', '$http', 'localStorageService', '$location', '$rootScope', '$routeParams', 'api', 'upload', 'postApi',
-	editQuartierController
-])
-
-.controller(
-	'editVideoCtrl',
-	['$scope', '$http', 'localStorageService', '$location', '$rootScope', '$routeParams', 'api', 'upload', 'postApi',
-	editVideoController
-])
-
-.controller(
-	'editArtisteCtrl',
-	['$scope', '$http', 'localStorageService', '$location', '$rootScope', '$routeParams', 'api', 'upload', 'postApi',
-	editArtisteController
+	editController
 ]);

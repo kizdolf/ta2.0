@@ -1,4 +1,4 @@
-var appController = function($scope, $http, localStorageService, $location, $rootScope, postApi, $sce){
+var appController = function($scope, $http, localStorageService, $location, $rootScope, postApi, $sce, $window){
 
 	$scope.playVideo = false;
 
@@ -9,8 +9,9 @@ var appController = function($scope, $http, localStorageService, $location, $roo
 
 	$scope.logout = function(){
 		localStorageService.clearAll();
-		$location.path('/login');
-	}
+		console.log('ici');
+		$window.location.reload();
+	};
 
 	postApi.lsPosts().then(function(data){
 		$scope.posts = data.posts;
@@ -20,13 +21,13 @@ var appController = function($scope, $http, localStorageService, $location, $roo
 		var html = getToken(link);
 		$scope.playVideo = true;
 		$scope.frame = $sce.trustAsHtml(html);
-		
-	}
+
+	};
 
 	var getToken = function(link){
 		if(link.indexOf('vimeo') != -1)
 			return  ("<iframe src='//player.vimeo.com/video/"+ link.split("/")[3] + "' frameborder=\"0\" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>");
 		else
 			return ("<iframe src='//www.youtube.com/embed/" + link.split("watch?v=")[1].split('&')[0] + "?feature=player_detailpage' frameborder='0' webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>");
-	}
-}
+	};
+};

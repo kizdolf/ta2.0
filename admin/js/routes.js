@@ -42,6 +42,12 @@ angular.module('adminTA.routes', ['ngRoute'])
 		templateUrl: 'views/post.html',
 		controller : 'postCtrl'
 	})
+
+	.when('/edit/:type/:id?',{
+		templateUrl: 'views/edit.html',
+		controller: 'editCtrl'
+	})
+
 	.when('/edit/quartier/:id?', {
 		templateUrl: 'views/editQuartier.html',
 		controller : 'editQuartierCtrl'

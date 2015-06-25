@@ -38,9 +38,41 @@ var postApi = function($http, localStorageService, $location){
 			});
 		},
 
+		"artistes" : function(){
+			return $http.get('/api/artiste/' + token + '/' + login).then(function(ret){
+				if(!ret.data.error)
+					return(ret.data.artistes);
+				else
+					return ret.data.error;
+			});
+		},
+
+		"videos" : function(){
+			return $http.get('/api/video/' + token + '/' + login).then(function(ret){
+				if(!ret.data.error)
+					return(ret.data.videos);
+				else
+					return ret.data.error;
+			});
+		},
+
 		"supprLieu" : function(id, pass){
 			var obj = {id: id, pass: pass};
 			return $http.patch('/api/quartier/' + token + '/' + login, obj).then(function(data){
+				return(data.data);
+			});
+		},
+
+		"supprArtiste" : function(id, pass){
+			var obj = {id: id, pass: pass};
+			return $http.patch('/api/artiste/' + token + '/' + login, obj).then(function(data){
+				return(data.data);
+			});
+		},
+
+		"supprVideo" : function(id, pass){
+			var obj = {id: id, pass: pass};
+			return $http.patch('/api/video/' + token + '/' + login, obj).then(function(data){
 				return(data.data);
 			});
 		},

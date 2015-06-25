@@ -1,3 +1,6 @@
+// TODO: Passer les rights en constantes
+// TODO: Créer un fichier de conf pour tout ça.
+
 'use strict';
 
 var		Admin			= require('./../models/admin'),
@@ -5,14 +8,13 @@ var		Admin			= require('./../models/admin'),
 		Artiste			= require('./../models/artiste'),
 		Q				= require('q'),
 		Verif			= require('./lib'),
-		mkdir			= require('mkdirp'),
 		rmrf			= require('rimraf'),
 		fs				= require('fs');
 
 exports.rightsOK = function(token, login, right){
 	var def = Q.defer();
 	Admin.findOne({token: token, name: login}, function(err, admin){
-		if(err || admin == null || admin.statut > right)
+		if(err || admin === null || admin.statut > right)
 			def.resolve(false);
 		else
 			def.resolve(true);
@@ -24,7 +26,7 @@ exports.rightsOK = function(token, login, right){
 exports.passOK = function(token, login, pass){
 	var def = Q.defer();
 	Admin.findOne({token: token, name: login}, function(err, admin){
-		if(err || admin == null)
+		if(err || admin === null)
 			def.resolve(false);
 		else{
 			admin.comparePassword(pass, function(err, isMatch){
@@ -74,7 +76,7 @@ exports.addPicture = function(req, res){
 					});//stream
 				});//on file
 			});//fin model
-		}//if 
+		}//if
 	});//rights
 }
 

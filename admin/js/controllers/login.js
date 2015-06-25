@@ -17,11 +17,12 @@ angular.module('adminTALogin.controllers', [])
 	['$scope', '$http', 'localStorageService', '$location', '$rootScope', '$window',
 	function($scope, $http, localStorageService, $location, $rootScope, $window){
 
-		/*If logued => redirect.*/
+		/*If logued => redirect., but not if wanted to disconnect.*/
 		var login = localStorageService.get('login');
 		var date = localStorageService.get('date');
 		var token = localStorageService.get('token');
-		if(login === null || date === null || token === null)
+		var pa = $location.search();
+		if(login === null || date === null || token === null || pa.a)
 			localStorageService.clearAll();
 		else
 			$window.location.href = '/admin/#/app';

@@ -5,12 +5,11 @@ var express		= require('express');
 module.exports = (function(){
 
 var	Admins				= require('./handlers/admin'),
-	Quartiers			= require('./handlers/quartier'),
 	Post				= require('./handlers/post'),
+	Quartiers			= require('./handlers/quartier'),
 	Artiste				= require('./handlers/artiste'),
-	Lib					= require('./lib/lib'),
-	bcrypt				= require('bcrypt-nodejs'),
-	SALT_WORK_FACTOR	= 10;
+	Video				= require('./handlers/video'),
+	Lib					= require('./lib/lib');
 
 var	router 				= express.Router();
 
@@ -36,14 +35,20 @@ router.route('/newAdmin/:token/:login')
 router.route('/me/:token/:login')
 	.get(Admins.whoAmI);
 
-router.route('/artiste/:token/:login')
-	.post(Artiste.new);
-
 router.route('/post/:token/:login')
 	.post(Post.new);
 
 router.route('/posts')
 	.get(Post.ls);
+
+router.route('/artiste/:token/:login')
+	.patch(Artiste.delete)
+	.post(Artiste.new)
+	.get(Artiste.ls);
+
+router.route('/video/:token/:login')
+	// .patch(Video.delete)
+	.get(Video.ls);
 
 router.route('/quartier/:token/:login')
 	.post(Quartiers.new)

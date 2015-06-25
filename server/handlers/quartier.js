@@ -1,11 +1,9 @@
 'use strict';
 
 var Lieu		= require('./../models/lieu'),
-	Q			= require('q'),
 	Verif		= require('./../lib/lib'),
 	mkdir		= require('mkdirp'),
-	rmrf		= require('rimraf'),
-	fs			= require('fs');
+	rmrf		= require('rimraf');
 
 exports.ls = function(req, res){
 
@@ -31,7 +29,7 @@ exports.modif = function(req, res){
 	Verif.rightsOK(token, login, 2).then(function(isAllowed){
 		if(isAllowed){
 			Lieu.findOne({_id: obj.id}, function (err, lieu) {
-				if(err || lieu == null)
+				if(err || lieu === null)
 					res.send(err);
 				lieu.name = obj.name;
 				lieu.text = obj.text;
@@ -48,6 +46,7 @@ exports.modif = function(req, res){
 };
 
 /*
+// TODO: 
 Doit trouver les videos associés et les tags 'sans quartier'
 */
 exports.delete = function(req, res){

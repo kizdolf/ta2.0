@@ -15,14 +15,14 @@
 <div ng-controller="logedCtrl" id="mainFrame">
 <div id="conteneur-menu2">
 	<ul>
-		<li><a href="/admin">Admin</a></li>
+		<li><a href="#/app">Admin</a></li>
 		<li><a href="#/profil">Editer le profil</a></li>
 		<li><a href="#/gestion">gestion admins</a></li>
 		<li><a href="../components/piwik/piwik/index.php">Stats site</a></li>
 		<li><a href="#/new/quartier">Nouveau quartier</a></li>
 		<li><a href="#/new/post">Nouveau post</a></li>
 		<li><a href="/">Voir le site</a></li>
-		<li><button ng-click="logout()">Se déconnecter ({{nameLoged}})</button> </li>
+		<li><a href="/admin/login.html#/?a=u">Se déconnecter ({{nameLoged}})</a> </li>
 	</ul>
 </div>
 <div id="sidebar">
@@ -112,9 +112,7 @@
 <script src="js/controllers/app.js"></script>
 <script src="js/controllers/gestion.js"></script>
 <script src="js/controllers/quartier.js"></script>
-<script src="js/controllers/editQuartier.js"></script>
-<script src="js/controllers/editArtiste.js"></script>
-<script src="js/controllers/editVideo.js"></script>
+<script src="js/controllers/edit.js"></script>
 
 <script src="js/app.js"></script>
 <script src="js/factorys.js"></script>
