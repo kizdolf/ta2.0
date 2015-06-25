@@ -3,7 +3,7 @@
 var express				= require('express'),
 	app					= express(),
 	bodyParser			= require('body-parser'),
-	port				= process.env.PORT || 8080, 
+	port				= process.env.PORT || 8080,
 	router				= require('./server/routes'),
 	mongoose   			= require('mongoose'),
 	admin				= express(),
@@ -16,36 +16,21 @@ global.appRoot = path.resolve(__dirname);
 app.use('/statics', express.static(__dirname + '/statics'))
 .use('/', express.static(__dirname + '/app'))
 
-.use(
-	bodyParser.urlencoded(
-		{
-			extended: true
-		})
-)
+.use(bodyParser.urlencoded({extended: true	}))
 .use(bodyParser.json())
 .use(busboy())
 .use('/api', router)
 
 .use('/admin', admin)
 
-.use('/', function(req, res){
-	res.render('index.html');
-})
+.use('/',express.static(__dirname + '/app'))
 
 .listen(port);
 
 admin.use('/statics', express.static(__dirname + '/statics'))
 .use('/', express.static(__dirname + '/admin'))
-.get('/', function(req, res){
-	res.render('index.html');
-})
 .use(busboy())
-.use(
-	bodyParser.urlencoded(
-		{
-			extended: true
-		})
-)
+.use(bodyParser.urlencoded({extended: true}))
 .use(bodyParser.json());
 
 console.log('port used : ' + port);

@@ -4,8 +4,8 @@ angular.module('adminTA.controllers', [])
 
 .controller(
 	'logedCtrl',
-	['$scope', '$http', 'localStorageService', '$location', '$rootScope',
-function($scope, $http, localStorageService, $location, $rootScope){
+	['$scope', '$http', 'localStorageService', '$location',
+function($scope, $http, localStorageService, $location){
 
 	var delay = moment().unix() - localStorageService.get('date');
 	if (delay > 3600)
@@ -19,15 +19,9 @@ function($scope, $http, localStorageService, $location, $rootScope){
 	$scope.logout = function(){
 		localStorageService.clearAll();
 		$location.path('/login');
-	}
+	};
 
 }])
-
-.controller(
-	'loginCtrl',
-	['$scope', '$http', 'localStorageService', '$location', '$rootScope', 'api',
-	loginController
-])
 
 .controller(
 	'gestionCtrl',
@@ -63,4 +57,16 @@ function($scope, $http, localStorageService, $location, $rootScope){
 	'editQuartierCtrl',
 	['$scope', '$http', 'localStorageService', '$location', '$rootScope', '$routeParams', 'api', 'upload', 'postApi',
 	editQuartierController
+])
+
+.controller(
+	'editVideoCtrl',
+	['$scope', '$http', 'localStorageService', '$location', '$rootScope', '$routeParams', 'api', 'upload', 'postApi',
+	editVideoController
+])
+
+.controller(
+	'editArtisteCtrl',
+	['$scope', '$http', 'localStorageService', '$location', '$rootScope', '$routeParams', 'api', 'upload', 'postApi',
+	editArtisteController
 ]);

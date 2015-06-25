@@ -2,9 +2,6 @@
 
 var Admin				= require('./../models/admin'),
 	Token				= require('rand-token'),
-	bcrypt				= require('bcrypt-nodejs'),
-	Q					= require('q'),
-	SALT_WORK_FACTOR	= 10,
 	verif				= require('./../lib/lib');
 
 
@@ -53,25 +50,33 @@ exports.whoAmI = function(req, res){
 	verif, recois login+mdp , verifie l'existance en bdd, créer un token unique, renvoie token + date + id admin
 */
 exports.verif = function(req, res){
-/*	console.log("I'm here");
-	console.log(req.body);
-	var adm = new Admin();
-	adm.name = "root";
-	adm.statut = 0;
-	adm.password = "4813494d137e1631bba301d5acab6e7bb7aa74ce1185d456565ef51d737677b2";
-	adm.save(function(err){
-		console.log("done!!");
+
+	var toVerif = req.body;
+	/*Check There is a admin. If there is not create it with given creditential */
+	Admin.find({}, function(err, response){
+		if(response.length === 0){
+			console.log('Aucun admins. Création.');
+			var newAdm = new Admin();
+			newAdm.name = toVerif.login;
+			newAdm.statut = 0;
+			newAdm.password = toVerif.password;
+			newAdm.save(function(err, user){
+				if(err){
+					console.log(err);
+				}else{
+					console.log('new admin created and saved.');
+					res.json({user: user});
+				}
+			});
+		}
 	});
-*/
-var toVerif = req.body;
+
 	Admin.findOne({name: toVerif.login}, function(err, user){
 		if(err)
 			res.send(err);
-		if(user == null){
-			console.log("no such user");
+		if(user === null){
 			res.json({error: "no such user."});
 		}else{
-			console.log("candidate pass: " + toVerif.password);
 			user.comparePassword(toVerif.password, function(err, isMatch){
 				if(err)
 					res.send(err);
@@ -84,7 +89,6 @@ var toVerif = req.body;
 						res.json({user: user});
 					});
 				}else{
-					console.log("compare failed.");
 					res.json({error: "wrong password"});
 				}
 			});
@@ -97,14 +101,14 @@ exports.lsAdmins = function(req, res){
 	Admin.findOne({token: params.token, name: params.login}, function(err, admin){
 		if (err)
 			res.send(err);
-		if (admin == null)
+		if (admin === null)
 			res.json({error: "no such admin"});
 		else if(admin.statut <= 1){
 			Admin.find({}, function(err, admins){
 				if (err)
 					res.send(err);
 				res.json({admins: admins});
-			})
+			});
 		}
 		else
 			res.json({error: "not enough rights."});
@@ -118,7 +122,7 @@ exports.supprAdmin = function(req, res){
 	Admin.findOne({token: params.token, name: params.login}, function(err, admin){
 		if(err)
 			res.send(err);
-		if(admin == null)
+		if(admin === null)
 			res.json({error: "no such admin"});
 		else if (admin.statut <= 0){
 			Admin.find({"name": adminDel.name}).remove(function(err, data){
@@ -152,9 +156,9 @@ exports.edit = function(req, res){
 						if(err)
 							res.send(err);
 						res.json({message: "update accepted."});
-					})
+					});
 				});
 			}
 		});
 	});
-}
+};
